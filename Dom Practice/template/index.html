@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user{
+            background-color: lightsalmon;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="user-container">
+
+    </div>
+</body>
+<script>
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => showUserData(data))
+
+    // User function
+    function showUserData(data){
+        console.log(data);
+        let userHTML = '';
+        data.forEach(user=>{
+            
+            userHTML += `<div class='user'>
+                <h3>Name: ${user.name}</h3>
+                <p>Email: ${user.email}<p>
+                <p>Company: ${user.company.name, user.company.catchPhrase}
+                </div>`;
+            
+        })
+        const userContainer = document.getElementById('user-container');
+        userContainer.innerHTML = userHTML;
+    }
+</script>
+</html>
